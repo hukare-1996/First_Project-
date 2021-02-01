@@ -1,0 +1,167 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top"
+  style="background-color: rgb(225, 233, 233); padding: 10px; ">
+  <div class="container">
+    <a class="navbar-brand" routerLink="admin">
+      <img src=".\assets\dashboard.png" width=30 height=80 alt="">DashBoard
+    </a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ">
+          <button type="button" class="btn btn-success" style="position:absolute; top: 10px; right:50px; "
+            (click)="Logout()">LogOut</button>
+        </li>
+        <li class="nav-item ">
+          <p style="position:absolute; top: 10px; right:180px; font-size: 23px; ">Welcome Librarian</p>
+        </li>
+      </ul>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+      <form action="/hms/accommodations" method="GET">
+        <div class="row">
+          <div class="col-xs-6 col-md-4">
+            <div class="input-group">
+              <input type="text" class="form-control" name="Book_title" [(ngModel)]="Book_title"
+                (ngModelChange)="Search()" placeholder="Search by title" id="txtSearch" />
+              <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+<section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="tm-section-header section-margin-top">
+          <div class="col-lg-4 col-md-3 col-sm-3">
+            <hr>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <h2 class="tm-section-title">Popular Books</h2>
+          </div>
+          <div class="col-lg-4 col-md-3 col-sm-3">
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+      <div class="card">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/410llGwMZGL._SX328_BO1,204,203,200_.jpg" alt="image"
+          style="max-width: 254px" class="img-responsive">
+        <h3>Alchemist</h3>
+        <p class="tm-date">28 March 2016</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+      <div class="tm-home-box-2">
+        <img
+          src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F13%2F2016%2F07%2F12%2FHP1.jpg"
+          alt="image" style="width:100%; height:380px" class="img-responsive">
+        <h3>Harry Potter</h3>
+        <p class="tm-date">28 March 2016</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+      <div class="tm-home-box-2">
+        <img
+          src="https://mlpnk72yciwc.i.optimole.com/cqhiHLc.WqA8~2eefa/w:auto/h:auto/q:75/https://bleedingcool.com/wp-content/uploads/2020/04/dragon-prince.jpg"
+          class="img-responsive">
+        <h3>Dragon Prince</h3>
+        <p class="tm-date">28 March 2016</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+      <div class="tm-home-box-2">
+        <img
+          src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/attachment_83090027.jpg?auto=format&q=60&fit=max&w=930"
+          alt="image" style="width:100%; height:380px" class="img-responsive">
+        <h3>Out of Box</h3>
+        <p class="tm-date">28 March 2016</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="tm-section-header section-margin-top">
+        <div class="col-lg-4 col-md-3 col-sm-3">
+          <hr>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <h2 class="tm-section-title">Welcome Librarian</h2>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-3">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="cont">
+  <!-- <h1 style="align-items: center;">Welcome Librarian</h1> -->
+
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th style="font-size: 30px;">id</th>
+        <th style="font-size: 30px;">Book_title</th>
+        <th style="font-size: 30px;">Book_author</th>
+        <th style="font-size: 30px;">NumberOfBooks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td style="font-size: 20px;">{{user.id}}</td>
+        <td style="font-size: 20px;">{{user.Book_title}}</td>
+        <td style="font-size: 20px;">{{user.Book_auther}}</td>
+        <td style="font-size: 20px;">{{user.NumberOfBooks}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="deleteRow(user.id)">Delete</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" (click)="update(user)">Update</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-secondary" (click)="add(user)">Add</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+            (click)="getData(user)"> Get Book Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail of Books =====> {{Book_title}}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <p> Author : {{Book_auther}}</p>
+            <p> No of NumberOfBooks : {{NumberOfBooks}}</p>
+            <p> Book Title : {{Book_title}}</p>
+            <p> Rank No : 10</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
